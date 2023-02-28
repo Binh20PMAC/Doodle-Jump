@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+
 public class PlayerController : MonoBehaviour
 {
   
-
-    [SerializeField]
     private Rigidbody2D rb;
 
     [SerializeField]
@@ -20,22 +21,45 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Text scoreText;
+
+    [SerializeField]
+    private TMP_Text highscoreText;
+
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
-    private float topScore = 0.0f;
+    public float topScore = 0f;
+    public float topHighScore = 0f;
+
+    public static PlayerController instance;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        topHighScore = PlayerPrefs.GetFloat("HighScore", 0);
+ 
+        highscoreText.text = "High Score: " + topHighScore.ToString();
+        scoreText.text = "Score: " + topScore.ToString();
+
         rb = GetComponent<Rigidbody2D>();
+
     }
+
+ 
 
     private void Update()
     {
         moveInput = Input.GetAxis("Horizontal"); // A and D are left, right keys 
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
+
+        AddPoint();
 
         if (moveInput < 0)
         {
@@ -50,7 +74,7 @@ public class PlayerController : MonoBehaviour
         {
             topScore = transform.position.y;
         }
-        scoreText.text = "Score: " + Mathf.Round(topScore).ToString();
+
 
         if(transform.position.x > 2.7f)
         {
@@ -64,9 +88,20 @@ public class PlayerController : MonoBehaviour
             XPlayer.x = 2.7f;
             transform.position = XPlayer;
         }
-
        
     }
+
+    public void AddPoint ()
+
+    {
+        scoreText.text = "Score: " + Mathf.Round(topScore).ToString();
+        highscoreText.text = "High Score: " + Mathf.Round(topHighScore).ToString();
+
+        if (topHighScore < topScore)
+            PlayerPrefs.SetFloat("HighScore", topScore);  
+    }
+  
+   
 }
 
  

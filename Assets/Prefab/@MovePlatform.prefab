@@ -146,3 +146,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 300
   move: 3
+  jump: {fileID: 8300000, guid: 3817f28f108d8064b9b7112cbf467ddc, type: 3}

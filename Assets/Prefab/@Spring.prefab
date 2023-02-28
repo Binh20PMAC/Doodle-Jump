@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9113563233980309976}
   - component: {fileID: 9113563233980309977}
   - component: {fileID: 9113563233980309982}
-  - component: {fileID: 2401846002967866509}
+  - component: {fileID: -5099531000790216555}
   m_Layer: 0
   m_Name: '@Spring'
   m_TagString: Spring
@@ -132,7 +132,7 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &2401846002967866509
+--- !u!114 &-5099531000790216555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,3 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 450
+  jump: {fileID: 8300000, guid: 5fe535f88658e344986e4ed0c30ecf28, type: 3}

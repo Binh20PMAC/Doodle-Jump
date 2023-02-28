@@ -25,7 +25,7 @@ public class Destroy : MonoBehaviour
 
 
     // Start is called before the first frame update
- 
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,68 +39,194 @@ public class Destroy : MonoBehaviour
 
         do
         {
-             spacePlatformX = Random.Range(-2.6f, 2.6f);
-             spacePlatformY = player.transform.position.y + spaceSpamPlatform + (int)Random.Range(0, 2);
-             spacePlatform = new Vector2(spacePlatformX, spacePlatformY);
+            spacePlatformX = Random.Range(-2.6f, 2.6f);
+            spacePlatformY = player.transform.position.y + spaceSpamPlatform + (int)Random.Range(0, 2);
+            spacePlatform = new Vector2(spacePlatformX, spacePlatformY);
 
-             collider = Physics2D.OverlapBox(spacePlatform,new Vector2(2.5f,2.5f),0);
+            collider = Physics2D.OverlapBox(spacePlatform, new Vector2(2.5f, 2.5f), 0);
             count++;
 
-        } while (collider != null && count  < maxTry);
+        } while (collider != null && count < maxTry);
 
 
         if (collision.CompareTag("Platform"))
         {
-            if (Random.Range(1, 8) == 1)
+            if (transform.position.y < 190) // Easy
             {
-                Destroy(collision.gameObject);
-                Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                if (Random.Range(1, 8) == 1)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 8) == 2)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+                }
             }
-            else if (Random.Range(1, 8) == 2)
+            else if (transform.position.y >= 190 && transform.position.y <= 390) // Medium
             {
-                Destroy(collision.gameObject);
-                Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                if (Random.Range(1, 8) == 1)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3) 
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+                }
             }
-            else
+            else if (transform.position.y > 390) // Hard
             {
-                collision.gameObject.transform.position = spacePlatform;
+                if (Random.Range(1, 8) == 1)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3 || Random.Range(1, 8) == 4) 
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+                }
             }
+
+
         }
         else if (collision.CompareTag("Spring"))
         {
-            if (Random.Range(1, 8) == 1)
+            if (transform.position.y < 190) // Easy
             {
-                collision.gameObject.transform.position = spacePlatform;
+                if (Random.Range(1, 8) == 1)
+                {
+                    collision.gameObject.transform.position = spacePlatform;
 
+                }
+                else if (Random.Range(1, 8) == 2)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                }
             }
-            else if (Random.Range(1, 8) == 2)
+
+            else if (transform.position.y >= 190 && transform.position.y <= 390) // Medium
             {
-                Destroy(collision.gameObject);
-                Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                if (Random.Range(1, 8) == 1)
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+
+                }
+                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3) 
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                }
             }
-            else
+            else if (transform.position.y > 390) // Hard
             {
-                Destroy(collision.gameObject);
-                Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                if (Random.Range(1, 8) == 1)
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+
+                }
+                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3 || Random.Range(1, 8) == 4)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                }
             }
+
+
         }
         else if (collision.CompareTag("MovePlatform"))
         {
-            if (Random.Range(1, 8) == 2)
-            {
-                collision.gameObject.transform.position = spacePlatform;
 
-            }
-            else if (Random.Range(1, 8) == 1)
+            if (transform.position.y < 190) // Easy
             {
-                Destroy(collision.gameObject);
-                Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                if (Random.Range(1, 8) == 2)
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+
+                }
+                else if (Random.Range(1, 8) == 1)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                }
             }
-            else
+
+            else if (transform.position.y >= 190 && transform.position.y <= 390) // Medium
             {
-                Destroy(collision.gameObject);
-                Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3)
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+
+                }
+                else if (Random.Range(1, 8) == 1)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                }
             }
+
+            else if (transform.position.y > 390) // Hard
+            {
+                if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3 || Random.Range(1, 8) == 4)
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+
+                }
+                else if (Random.Range(1, 8) == 1)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                }
+            }
+
+
+
         }
 
 
