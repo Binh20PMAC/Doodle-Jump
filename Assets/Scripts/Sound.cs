@@ -20,7 +20,7 @@ public class Sound : MonoBehaviour
     }
     private void Start()
     {
-        saw= GetComponent<AudioSource>();
+        saw = GetComponent<AudioSource>();
     }
 
     public void Jump()

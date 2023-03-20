@@ -15,7 +15,7 @@ public class Bounce : MonoBehaviour
         {
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * force);
 
-            Sound.instance.Jump();
+            AudioManager.instance.PlaySFX("Jump");
             
         }
     }
