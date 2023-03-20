@@ -536,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9cfeef737718e4dbd25c3e2e77ab0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Background: {fileID: 0}
+  Background: {fileID: 338349169}
   PauseBackround: {fileID: 1403502056}
 --- !u!4 &154851097
 Transform:
