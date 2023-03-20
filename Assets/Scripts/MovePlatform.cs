@@ -11,12 +11,6 @@ public class MovePlatform : MonoBehaviour
     [SerializeField]
     private float move = 3f;
 
-    private AudioSource saw;
-
-    [SerializeField]
-    private AudioClip jump;
-
-
     private Vector3 positonMove;
     private Vector3 dir;
 
@@ -27,8 +21,6 @@ public class MovePlatform : MonoBehaviour
     {
         positonMove = new Vector3(2.2f, transform.position.y, 0);
         dir = (positonMove - transform.position).normalized;
-        saw = GameObject.FindObjectOfType<AudioSource>();
-
     }
     private void Update()
     {
@@ -55,10 +47,10 @@ public class MovePlatform : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
-          
+
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * force);
-            saw.PlayOneShot(jump);
+            AudioManager.instance.PlaySFX("Jump");
         }
-       
+
     }
 }
