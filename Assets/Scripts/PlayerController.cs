@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
     public float topScore = 0f;
     public float topHighScore = 0f;
 
+    private float LeftX;
+    private float RightX;
+
     public static PlayerController instance;
 
 
@@ -49,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
+        LeftX = ((float)Screen.width / (float)Screen.height) * (-5);
+        RightX = ((float)Screen.width / (float)Screen.height) * (5);
     }
 
  
@@ -76,16 +81,16 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if(transform.position.x > 2.7f)
+        if(transform.position.x > RightX)
         {
             Vector2 XPlayer = transform.position;
-            XPlayer.x = -2.7f;
+            XPlayer.x = LeftX;
             transform.position = XPlayer;
         }
-        else if(transform.position.x < -2.7f)
+        else if(transform.position.x < LeftX)
         {
             Vector2 XPlayer = transform.position;
-            XPlayer.x = 2.7f;
+            XPlayer.x = RightX;
             transform.position = XPlayer;
         }
        
