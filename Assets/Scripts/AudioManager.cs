@@ -9,22 +9,33 @@ public class AudioManager : MonoBehaviour
     public Audio[] musicAudio, sfxAudio;
     public AudioSource musicSource, sfxSource;
 
-    private void Awake()
+    [SerializeField]
+    private GameObject TurnOn;
+
+    private void Start()
     {
-        if (instance == null)
+        if (PlayerPrefs.GetInt("SFXMute") == 1)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            sfxSource.mute = true;
+            TurnOn.SetActive(false);
         }
         else
         {
-            Destroy(gameObject);
+            sfxSource.mute = false;
+
+            TurnOn.SetActive(true);
         }
+    }
+    private void Awake()
+    {
+
+        instance = this;
+
     }
 
     public void PlayMusic(string name)
     {
-        Audio s  = Array.Find(musicAudio, x => x.name == name);
+        Audio s = Array.Find(musicAudio, x => x.name == name);
 
         if (s == null)
         {
@@ -42,13 +53,28 @@ public class AudioManager : MonoBehaviour
 
         Audio s = Array.Find(sfxAudio, x => x.name == name);
 
-        if(s == null)
+        if (s == null)
         {
             Debug.Log("SFX not found");
         }
         else
         {
             sfxSource.PlayOneShot(s.clip);
+        }
+    }
+
+    public void ToggleSFX()
+    {
+        sfxSource.mute = !sfxSource.mute;
+        if (sfxSource.mute)
+        {
+            PlayerPrefs.SetInt("SFXMute", 1);
+            TurnOn.SetActive(false);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("SFXMute", 0);
+            TurnOn.SetActive(true);
         }
     }
 }

@@ -34,20 +34,19 @@ public class Destroy : MonoBehaviour
         Vector2 spacePlatform;
         float spacePlatformY;
         float spacePlatformX;
-        int maxTry = 10;
+        int maxTry = 250;
         int count = 0;
 
         do
         {
             spacePlatformX = Random.Range(-2.6f, 2.6f);
-            spacePlatformY = player.transform.position.y + spaceSpamPlatform + (int)Random.Range(0, 2);
+            spacePlatformY = player.transform.position.y + spaceSpamPlatform + (int)Random.Range(1, 3);
             spacePlatform = new Vector2(spacePlatformX, spacePlatformY);
 
-            collider = Physics2D.OverlapBox(spacePlatform, new Vector2(2.5f, 2.5f), 0);
+            collider = Physics2D.OverlapBox(spacePlatform, new Vector2(4f, 2f), 0);
+             
             count++;
-
         } while (collider != null && count < maxTry);
-
 
         if (collision.CompareTag("Platform"))
         {
@@ -75,7 +74,7 @@ public class Destroy : MonoBehaviour
                     Destroy(collision.gameObject);
                     Instantiate(springPrefab, spacePlatform, Quaternion.identity);
                 }
-                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3) 
+                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(movePlatform, spacePlatform, Quaternion.identity);
@@ -92,7 +91,7 @@ public class Destroy : MonoBehaviour
                     Destroy(collision.gameObject);
                     Instantiate(springPrefab, spacePlatform, Quaternion.identity);
                 }
-                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3 || Random.Range(1, 8) == 4) 
+                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3 || Random.Range(1, 8) == 4)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(movePlatform, spacePlatform, Quaternion.identity);
@@ -133,7 +132,7 @@ public class Destroy : MonoBehaviour
                     collision.gameObject.transform.position = spacePlatform;
 
                 }
-                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3) 
+                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(movePlatform, spacePlatform, Quaternion.identity);

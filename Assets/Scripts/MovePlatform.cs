@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using TreeEditor;
+
 using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
     [SerializeField]
-    private float force = 300f;
+    private float force = 350f;
 
     [SerializeField]
     private float move = 3f;
@@ -51,6 +49,7 @@ public class MovePlatform : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * force);
             AudioManager.instance.PlaySFX("Jump");
         }
+
 
     }
 }

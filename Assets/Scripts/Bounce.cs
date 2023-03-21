@@ -6,18 +6,20 @@ using UnityEngine;
 public class Bounce : MonoBehaviour
 {
     [SerializeField]
-    private float force = 320f;
+    private float force = 350f;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
+        if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0 && collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * force);
 
             AudioManager.instance.PlaySFX("Jump");
-            
         }
+       
+      
     }
-   
+  
+
 }

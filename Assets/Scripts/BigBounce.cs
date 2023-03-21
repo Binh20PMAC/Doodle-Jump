@@ -14,7 +14,6 @@ public class BigBounce : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * force);
 
             AudioManager.instance.PlaySFX("Spring");
-
         }
 
     }

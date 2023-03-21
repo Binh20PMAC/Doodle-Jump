@@ -16,6 +16,7 @@ public class YourScore : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.PlaySFX("GameOver");
         score = PlayerController.instance.topScore;
         highscore = PlayerController.instance.topHighScore;
 
