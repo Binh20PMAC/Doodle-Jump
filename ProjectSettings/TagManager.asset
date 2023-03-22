@@ -8,6 +8,7 @@ TagManager:
   - Spring
   - PauseMenu
   - MovePlatform
+  - BreakPlatform
   layers:
   - Default
   - TransparentFX

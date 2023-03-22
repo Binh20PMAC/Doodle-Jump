@@ -50,8 +50,10 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        LeftX = ((float)Screen.width / (float)Screen.height) * (-5);
-        RightX = ((float)Screen.width / (float)Screen.height) * (5);
+        //LeftX = ((float)Screen.width / (float)Screen.height) * (-5);
+        //RightX = ((float)Screen.width / (float)Screen.height) * (5);
+        LeftX = (600f / 960f) * (-5);
+        RightX = (600f / 960f) * 5;
     }
 
  

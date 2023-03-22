@@ -19,6 +19,9 @@ public class Destroy : MonoBehaviour
     private GameObject movePlatform;
 
     [SerializeField]
+    private GameObject breakPlatform;
+
+    [SerializeField]
     private float spaceSpamPlatform = 3f;
 
     private GameObject myPlat;
@@ -44,7 +47,7 @@ public class Destroy : MonoBehaviour
             spacePlatform = new Vector2(spacePlatformX, spacePlatformY);
 
             collider = Physics2D.OverlapBox(spacePlatform, new Vector2(4f, 2f), 0);
-             
+
             count++;
         } while (collider != null && count < maxTry);
 
@@ -52,15 +55,20 @@ public class Destroy : MonoBehaviour
         {
             if (transform.position.y < 190) // Easy
             {
-                if (Random.Range(1, 8) == 1)
+                if (Random.Range(1, 9) == 1)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(springPrefab, spacePlatform, Quaternion.identity);
                 }
-                else if (Random.Range(1, 8) == 2)
+                else if (Random.Range(1, 9) == 2)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(breakPlatform, spacePlatform, Quaternion.identity);
                 }
                 else
                 {
@@ -69,15 +77,20 @@ public class Destroy : MonoBehaviour
             }
             else if (transform.position.y >= 190 && transform.position.y <= 390) // Medium
             {
-                if (Random.Range(1, 8) == 1)
+                if (Random.Range(1, 9) == 1)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(springPrefab, spacePlatform, Quaternion.identity);
                 }
-                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3)
+                else if (Random.Range(1, 9) == 2 || Random.Range(1, 9) == 3)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(breakPlatform, spacePlatform, Quaternion.identity);
                 }
                 else
                 {
@@ -86,15 +99,20 @@ public class Destroy : MonoBehaviour
             }
             else if (transform.position.y > 390) // Hard
             {
-                if (Random.Range(1, 8) == 1)
+                if (Random.Range(1, 9) == 1)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(springPrefab, spacePlatform, Quaternion.identity);
                 }
-                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3 || Random.Range(1, 8) == 4)
+                else if (Random.Range(1, 9) == 2 || Random.Range(1, 9) == 3 || Random.Range(1, 9) == 4)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(breakPlatform, spacePlatform, Quaternion.identity);
                 }
                 else
                 {
@@ -108,16 +126,22 @@ public class Destroy : MonoBehaviour
         {
             if (transform.position.y < 190) // Easy
             {
-                if (Random.Range(1, 8) == 1)
+                if (Random.Range(1, 9) == 1)
                 {
                     collision.gameObject.transform.position = spacePlatform;
 
                 }
-                else if (Random.Range(1, 8) == 2)
+                else if (Random.Range(1, 9) == 2)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(movePlatform, spacePlatform, Quaternion.identity);
                 }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(breakPlatform, spacePlatform, Quaternion.identity);
+                }
+
                 else
                 {
                     Destroy(collision.gameObject);
@@ -127,15 +151,20 @@ public class Destroy : MonoBehaviour
 
             else if (transform.position.y >= 190 && transform.position.y <= 390) // Medium
             {
-                if (Random.Range(1, 8) == 1)
+                if (Random.Range(1, 9) == 1)
                 {
                     collision.gameObject.transform.position = spacePlatform;
 
                 }
-                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3)
+                else if (Random.Range(1, 9) == 2 || Random.Range(1, 9) == 3)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(breakPlatform, spacePlatform, Quaternion.identity);
                 }
                 else
                 {
@@ -145,15 +174,20 @@ public class Destroy : MonoBehaviour
             }
             else if (transform.position.y > 390) // Hard
             {
-                if (Random.Range(1, 8) == 1)
+                if (Random.Range(1, 9) == 1)
                 {
                     collision.gameObject.transform.position = spacePlatform;
 
                 }
-                else if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3 || Random.Range(1, 8) == 4)
+                else if (Random.Range(1, 9) == 2 || Random.Range(1, 9) == 3 || Random.Range(1, 9) == 4)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(breakPlatform, spacePlatform, Quaternion.identity);
                 }
                 else
                 {
@@ -169,15 +203,20 @@ public class Destroy : MonoBehaviour
 
             if (transform.position.y < 190) // Easy
             {
-                if (Random.Range(1, 8) == 2)
+                if (Random.Range(1, 9) == 2)
                 {
                     collision.gameObject.transform.position = spacePlatform;
 
                 }
-                else if (Random.Range(1, 8) == 1)
+                else if (Random.Range(1, 9) == 1)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(breakPlatform, spacePlatform, Quaternion.identity);
                 }
                 else
                 {
@@ -188,15 +227,20 @@ public class Destroy : MonoBehaviour
 
             else if (transform.position.y >= 190 && transform.position.y <= 390) // Medium
             {
-                if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3)
+                if (Random.Range(1, 9) == 2 || Random.Range(1, 9) == 3)
                 {
                     collision.gameObject.transform.position = spacePlatform;
 
                 }
-                else if (Random.Range(1, 8) == 1)
+                else if (Random.Range(1, 9) == 1)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(breakPlatform, spacePlatform, Quaternion.identity);
                 }
                 else
                 {
@@ -207,15 +251,20 @@ public class Destroy : MonoBehaviour
 
             else if (transform.position.y > 390) // Hard
             {
-                if (Random.Range(1, 8) == 2 || Random.Range(1, 8) == 3 || Random.Range(1, 8) == 4)
+                if (Random.Range(1, 9) == 2 || Random.Range(1, 9) == 3 || Random.Range(1, 9) == 4)
                 {
                     collision.gameObject.transform.position = spacePlatform;
 
                 }
-                else if (Random.Range(1, 8) == 1)
+                else if (Random.Range(1, 9) == 1)
                 {
                     Destroy(collision.gameObject);
                     Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(breakPlatform, spacePlatform, Quaternion.identity);
                 }
                 else
                 {
@@ -224,6 +273,78 @@ public class Destroy : MonoBehaviour
                 }
             }
 
+
+
+        }
+        else if (collision.CompareTag("BreakPlatform"))
+        {
+            if (transform.position.y < 190) // Easy
+            {
+                if (Random.Range(1, 9) == 1)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 2)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                }
+            }
+            else if (transform.position.y >= 190 && transform.position.y <= 390) // Medium
+            {
+                if (Random.Range(1, 9) == 1)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 2 || Random.Range(1, 9) == 3)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+                }
+                else
+                {
+
+                    Destroy(collision.gameObject);
+                    Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                }
+            }
+            else if (transform.position.y > 390) // Hard
+            {
+                if (Random.Range(1, 9) == 1)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(springPrefab, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 2 || Random.Range(1, 9) == 3 || Random.Range(1, 9) == 4)
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(movePlatform, spacePlatform, Quaternion.identity);
+                }
+                else if (Random.Range(1, 9) == 5)
+                {
+                    collision.gameObject.transform.position = spacePlatform;
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                    Instantiate(platformPrefab, spacePlatform, Quaternion.identity);
+                }
+            }
 
 
         }

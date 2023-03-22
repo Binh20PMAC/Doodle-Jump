@@ -965,7 +965,7 @@ TextureImporter:
         width: 59
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1149,10 +1149,10 @@ TextureImporter:
       name: game-tiles_17
       rect:
         serializedVersion: 2
-        x: 1
-        y: 424
-        width: 60
-        height: 15
+        x: 0
+        y: 423
+        width: 61
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1340,7 +1340,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 400
-        width: 62
+        width: 61
         height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1443,10 +1443,10 @@ TextureImporter:
       name: game-tiles_31
       rect:
         serializedVersion: 2
-        x: 2
-        y: 367
-        width: 58
-        height: 30
+        x: 0
+        y: 368
+        width: 61
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1821,10 +1821,10 @@ TextureImporter:
       name: game-tiles_49
       rect:
         serializedVersion: 2
-        x: 1
-        y: 331
-        width: 25
-        height: 29
+        x: 0
+        y: 330
+        width: 61
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1834,27 +1834,6 @@ TextureImporter:
       bones: []
       spriteID: ae5b731fcd56a554e95c15a234bfb148
       internalID: 21300098
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: game-tiles_50
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 330
-        width: 21
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e5fb92c09b186f489aa208bc62c3323
-      internalID: 21300100
       vertices: []
       indices: 
       edges: []
