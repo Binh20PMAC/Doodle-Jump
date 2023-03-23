@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        topHighScore = PlayerPrefs.GetFloat("HighScore", 0);
+        topHighScore = PlayerPrefs.GetFloat("HighScore1", 0);
  
         highscoreText.text = "High Score: " + topHighScore.ToString();
         scoreText.text = "Score: " + topScore.ToString();
@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        highscoreText.text = "High Score: " + topHighScore.ToString();
+        topHighScore = PlayerPrefs.GetFloat("HighScore1", 0);
         moveInput = Input.GetAxis("Horizontal"); // A and D are left, right keys 
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
@@ -103,7 +105,7 @@ public class PlayerController : MonoBehaviour
         highscoreText.text = "High Score: " + Mathf.Round(topHighScore).ToString();
 
         if (topHighScore < topScore)
-            PlayerPrefs.SetFloat("HighScore", topScore);  
+            PlayerPrefs.SetFloat("HighScore1", topScore);  
     }
   
    
