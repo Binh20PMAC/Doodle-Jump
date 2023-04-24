@@ -1880,7 +1880,7 @@ TextureImporter:
         width: 52
         height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1888,6 +1888,48 @@ TextureImporter:
       bones: []
       spriteID: 5506bd9d49bbad147a6a590c199fb8d1
       internalID: 1256815615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Flappy_Bird_-_Version_12_Sprites_84
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 263
+        width: 53
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a3bdc455cba7b749a6d54160bc6da9e
+      internalID: 783429460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Flappy_Bird_-_Version_12_Sprites_85
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 263
+        width: 53
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eb9b55bcf1c9084a8f13be782aaa949
+      internalID: 1419338559
       vertices: []
       indices: 
       edges: []
@@ -1986,6 +2028,8 @@ TextureImporter:
       Mobile_-_Flappy_Bird_-_Version_12_Sprites_81: -1102743689
       Mobile_-_Flappy_Bird_-_Version_12_Sprites_82: -510140505
       Mobile_-_Flappy_Bird_-_Version_12_Sprites_83: 1256815615
+      Mobile_-_Flappy_Bird_-_Version_12_Sprites_84: 783429460
+      Mobile_-_Flappy_Bird_-_Version_12_Sprites_85: 1419338559
       Mobile_-_Flappy_Bird_-_Version_12_Sprites_9: 1936212114
   spritePackingTag: 
   pSDRemoveMatte: 0

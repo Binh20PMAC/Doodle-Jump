@@ -15,6 +15,7 @@ public class PlayAgain : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
         Play = false;
+        Time.timeScale = 1.00f;
     }
 
 }

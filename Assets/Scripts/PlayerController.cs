@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 10f;
 
     [SerializeField]
-    private Text scoreText;
+    private TMP_Text scoreText;
 
     [SerializeField]
     private TMP_Text highscoreText;
@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
-
+    [SerializeField]
+    private GameObject Restart;
     private void Awake()
     {
         instance = this;
@@ -95,7 +96,10 @@ public class PlayerController : MonoBehaviour
             XPlayer.x = RightX;
             transform.position = XPlayer;
         }
-       
+       if(PlayAgain.Play)
+        {
+            Restart.SetActive(true);
+        }
     }
 
     public void AddPoint ()

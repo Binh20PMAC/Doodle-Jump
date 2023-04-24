@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField]
     private GameObject TurnOn;
+    [SerializeField]
+    private GameObject TurnOnPause;
 
     private void Start()
     {
@@ -18,12 +20,14 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource.mute = true;
             TurnOn.SetActive(false);
+            TurnOnPause.SetActive(false);
         }
         else
         {
             sfxSource.mute = false;
 
             TurnOn.SetActive(true);
+            TurnOnPause.SetActive(true);
         }
     }
     private void Awake()
@@ -70,11 +74,13 @@ public class AudioManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("SFXMute", 1);
             TurnOn.SetActive(false);
+            TurnOnPause.SetActive(false);
         }
         else
         {
             PlayerPrefs.SetInt("SFXMute", 0);
             TurnOn.SetActive(true);
+            TurnOnPause.SetActive(true);
         }
     }
 }

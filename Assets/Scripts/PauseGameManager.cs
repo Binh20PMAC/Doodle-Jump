@@ -6,32 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class PauseGameManager : MonoBehaviour
 {
-
-    bool Pause = true;
-
-    [SerializeField]
-    private GameObject Background;
+    private bool Pause = true;
 
     [SerializeField]
     private GameObject PauseBackround;
 
-    void Update()
+    public void pause()
     {
-        if (Input.GetKeyDown("escape"))
-        {
-            Pause = !Pause;
-            Background.SetActive(false);
-            PauseBackround.SetActive(true);
-
-            if (Pause == true)
-            {
-                Background.SetActive(true);
-                PauseBackround.SetActive(false);
-            }
-        }
-
-
+        Pause = !Pause;
+        PauseBackround.SetActive(!Pause);
         Time.timeScale = (Pause) ? 1.00f : 0.00f; //If your time scale isn't working, change Paused to !Paused
-
     }
 }

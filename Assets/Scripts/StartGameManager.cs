@@ -16,6 +16,9 @@ public class StartGameManager : MonoBehaviour
     private GameObject GroupPlatform;
     [SerializeField]
     private GameObject SettingSound;
+    [SerializeField]
+    private GameObject Restart;
+
 
     private void Start()
     {
@@ -41,6 +44,7 @@ public class StartGameManager : MonoBehaviour
         SettingSound.SetActive(false);
         Player.SetActive(true);
         GroupPlatform.SetActive(true);
+        Restart.SetActive(true);
     }
     public void restart()
     {
