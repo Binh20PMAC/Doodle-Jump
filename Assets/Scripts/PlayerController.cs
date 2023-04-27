@@ -1,11 +1,6 @@
-
-using System.Collections;
+﻿
 using TMPro;
 using UnityEngine;
-
-using UnityEngine.UI;
-
-
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,11 +33,18 @@ public class PlayerController : MonoBehaviour
 
     private bool m_FacingRight = true;
     private string currentAnimName;
+    private float timeSinceLastClick = 0f;
+    private float maxTimeBeforeSwitch = 1f;
+
+    private float velocity = 0f;
 
     public static PlayerController instance;
 
     [SerializeField]
     private GameObject Restart;
+
+    [SerializeField]
+    private GameObject headShoot;
     private void Awake()
     {
         instance = this;
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        velocity = gameObject.GetComponent<Rigidbody2D>().velocity.y;
         highscoreText.text = "High Score: " + topHighScore.ToString();
         topHighScore = PlayerPrefs.GetFloat("HighScore1", 0);
         moveInput = Input.GetAxis("Horizontal"); // A and D are left, right keys 
@@ -107,29 +110,46 @@ public class PlayerController : MonoBehaviour
         {
             Restart.SetActive(true);
         }
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 5 && animator.GetBool("isJump"))
+        if (velocity > 5 && animator.GetBool("isJump"))
         {
             ChangeAnim("isIdle");
             animator.SetBool("isJump", false);
         }
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 25f)
+        if (velocity > 25f)
         {
             Vector2 vector2 = gameObject.GetComponent<Rigidbody2D>().velocity;
             vector2.y = 25f;
             gameObject.GetComponent<Rigidbody2D>().velocity = vector2;
         }
 
+        timeSinceLastClick += Time.deltaTime;
+        animator.SetFloat("velocity", velocity);
+
+        if (timeSinceLastClick >= maxTimeBeforeSwitch)
+        {
+            animator.SetBool("isIdleShoot", false);
+            headShoot.SetActive(false);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool("isIdleShoot", true);
+            timeSinceLastClick = 0f;
+            headShoot.SetActive(true);
+        }
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Spring") || collision.gameObject.CompareTag("MovePlatform") && gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
+        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Spring") || collision.gameObject.CompareTag("MovePlatform") && velocity <= 0)
         {
             ChangeAnim("isJumping");
             animator.SetBool("isJump", true);
         }
     }
+
+
 
     public void AddPoint()
 
