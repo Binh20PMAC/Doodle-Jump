@@ -11,10 +11,11 @@ public class Bounce : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0 && collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * force);
-
+           
             AudioManager.instance.PlaySFX("Jump");
         }
         if (collision.gameObject.CompareTag("Spring"))
@@ -34,6 +35,5 @@ public class Bounce : MonoBehaviour
             transform.position = new Vector3(transform.position.x - 2f, transform.position.y, 0);
         }
     }
-
 
 }
