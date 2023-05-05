@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject headShoot;
+
+    [SerializeField]
+    private GameObject backGroundGameOver;
     private void Awake()
     {
         instance = this;
@@ -149,8 +152,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
-
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            ChangeAnim("gameOver");
+            Collider2D collider = GetComponent<Collider2D>();
+            if (!collider.isTrigger)
+                AudioManager.instance.PlaySFX("Fall");
+            collider.isTrigger = true;
+        }
+    }
     public void AddPoint()
 
     {

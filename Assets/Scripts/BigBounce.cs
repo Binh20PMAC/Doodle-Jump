@@ -4,9 +4,6 @@ public class BigBounce : MonoBehaviour
 {
     [SerializeField]
     private float force = 450f;
-
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)

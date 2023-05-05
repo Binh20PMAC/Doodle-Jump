@@ -22,37 +22,30 @@ public class Destroy : MonoBehaviour
     private GameObject breakPlatform;
 
     [SerializeField]
-    private float spaceSpamPlatform = 3f;
+    private float spaceSpamPlatform = 13f;
 
-    private GameObject myPlat;
-
-
-    // Start is called before the first frame update
-
+    [SerializeField]
+    private Transform gameOver;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        Collider2D collider;
+        Debug.Log("Platform");
+        Collider2D[] colliders;
         Vector2 spacePlatform;
         float spacePlatformY;
         float spacePlatformX;
-        int maxTry = 250;
-        int count = 0;
-
         do
         {
             spacePlatformX = Random.Range(-2.6f, 2.6f);
-            spacePlatformY = player.transform.position.y + spaceSpamPlatform + (int)Random.Range(1, 3);
+            spacePlatformY = gameOver.transform.position.y + spaceSpamPlatform + (int)Random.Range(1, 4);
             spacePlatform = new Vector2(spacePlatformX, spacePlatformY);
 
-            collider = Physics2D.OverlapBox(spacePlatform, new Vector2(4f, 2f), 0);
+            colliders = Physics2D.OverlapBoxAll(spacePlatform, new Vector2(1.5f, 1.5f), 0);
+        } while (colliders.Length > 0);
 
-            count++;
-        } while (collider != null && count < maxTry);
-
-        if (collision.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Platform"))
         {
+            
             if (transform.position.y < 190) // Easy
             {
                 if (Random.Range(1, 9) == 1)
@@ -122,7 +115,7 @@ public class Destroy : MonoBehaviour
 
 
         }
-        else if (collision.CompareTag("Spring"))
+        else if (collision.gameObject.CompareTag("Spring"))
         {
             if (transform.position.y < 190) // Easy
             {
@@ -198,7 +191,7 @@ public class Destroy : MonoBehaviour
 
 
         }
-        else if (collision.CompareTag("MovePlatform"))
+        else if (collision.gameObject.CompareTag("MovePlatform"))
         {
 
             if (transform.position.y < 190) // Easy
@@ -276,7 +269,7 @@ public class Destroy : MonoBehaviour
 
 
         }
-        else if (collision.CompareTag("BreakPlatform"))
+        else if (collision.gameObject.CompareTag("BreakPlatform"))
         {
             if (transform.position.y < 190) // Easy
             {

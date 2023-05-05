@@ -51,6 +51,4 @@ public class StartGameManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
         PlayAgain.Play = true;
     }
-
-
 }

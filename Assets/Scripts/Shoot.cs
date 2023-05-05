@@ -15,7 +15,7 @@ public class Shoot : MonoBehaviour
         vector3.y += 0.1f;
 
         // Create bullet pool
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.SetActive(false);
@@ -38,23 +38,24 @@ public class Shoot : MonoBehaviour
 
             // Set the rotation of the player's transform to the calculated rotation angle around the z-axis
             transform.rotation = Quaternion.Euler(0f, 0f, rotation);
-            Debug.Log(Time.time - last);
             if (Time.time - last < 0.2f) // Delay bullet
             { return; }
             last = Time.time;
+
+            AudioManager.instance.PlaySFX("Shoot");
 
             // Get bullet from pool
             GameObject bullet = GetNextBulletFromPool();
             bullet.transform.position = transform.position;
             bullet.SetActive(true);
             bullet.transform.rotation = transform.rotation;
-            bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 15f;
+            bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 20f;
         }
     }
     private GameObject GetNextBulletFromPool()
     {
         GameObject bullet = bulletPool[nextBulletIndex];
-        nextBulletIndex = (nextBulletIndex + 1) % 4;
+        nextBulletIndex = (nextBulletIndex + 1) % 5;
         return bullet;
     }
 

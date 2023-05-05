@@ -12,14 +12,11 @@ public class BreakPlatform : MonoBehaviour
         {
             animator.SetBool("Run", false);
         }
-        
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
-            
             if(!animator.GetBool("Run"))
             AudioManager.instance.PlaySFX("Break");
             animator.SetBool("Run", true);

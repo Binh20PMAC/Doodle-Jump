@@ -7,49 +7,28 @@ public class MovePlatform : MonoBehaviour
     private float force = 350f;
 
     [SerializeField]
-    private float move = 3f;
+    private float moveSpeed = 3f;
+    private int direction = 1;
 
-    private Vector3 positonMove;
-    private Vector3 dir;
-
-
-    // Start is called before the first frame update
-
-    private void Start()
-    {
-        positonMove = new Vector3(2.2f, transform.position.y, 0);
-        dir = (positonMove - transform.position).normalized;
-    }
     private void Update()
     {
-
-        if (transform.position.x > 2.2f)
+        transform.Translate(new Vector2(moveSpeed * direction * Time.deltaTime, 0));
+        if (transform.position.x < -2.5f)
         {
-
-            positonMove.x = transform.position.x;
-            positonMove.x = -positonMove.x;
-            dir = (positonMove - transform.position).normalized;
+            direction = 1;
         }
-        if (transform.position.x < -2.2f)
+        else if (transform.position.x > 2.5f)
         {
-            positonMove.x = transform.position.x;
-            positonMove.x = -positonMove.x;
-            dir = (positonMove - transform.position).normalized;
+            direction = -1;
         }
-
-        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + dir.x, transform.position.y, 0), move * Time.deltaTime);
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
-
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * force);
             AudioManager.instance.PlaySFX("Jump");
         }
-
-
     }
 }

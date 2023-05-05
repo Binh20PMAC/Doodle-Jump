@@ -9,6 +9,10 @@ TagManager:
   - PauseMenu
   - MovePlatform
   - BreakPlatform
+  - Boss
+  - Bullet
+  - Destroy
+  - Limit
   layers:
   - Default
   - TransparentFX
