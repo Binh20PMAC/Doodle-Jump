@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
             vector2.y = 25f;
             gameObject.GetComponent<Rigidbody2D>().velocity = vector2;
         }
-
+        // Change anim shoot
         timeSinceLastClick += Time.deltaTime;
         animator.SetFloat("velocity", velocity);
 
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
             headShoot.SetActive(false);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !gameObject.GetComponent<Collider2D>().isTrigger)
         {
             animator.SetBool("isIdleShoot", true);
             timeSinceLastClick = 0f;

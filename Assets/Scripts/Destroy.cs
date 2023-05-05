@@ -37,10 +37,10 @@ public class Destroy : MonoBehaviour
         do
         {
             spacePlatformX = Random.Range(-2.6f, 2.6f);
-            spacePlatformY = gameOver.transform.position.y + spaceSpamPlatform + (int)Random.Range(1, 4);
+            spacePlatformY = gameOver.transform.position.y + spaceSpamPlatform + (int)Random.Range(0, 2);
             spacePlatform = new Vector2(spacePlatformX, spacePlatformY);
 
-            colliders = Physics2D.OverlapBoxAll(spacePlatform, new Vector2(1.5f, 1.5f), 0);
+            colliders = Physics2D.OverlapBoxAll(spacePlatform, new Vector2(1.5f, 1f), 0);
         } while (colliders.Length > 0);
 
         if (collision.gameObject.CompareTag("Platform"))

@@ -25,7 +25,7 @@ public class Shoot : MonoBehaviour
     private void Update()
     {
         transform.position = player.transform.position + vector3;
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !player.GetComponent<Collider2D>().isTrigger)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
